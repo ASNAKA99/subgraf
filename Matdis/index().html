@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subgraf</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+             padding: 0;
+            background-color: #fff;
+        }
+        /* .container-sisi{
+            margin: 50px auto ;
+
+        }
+        .container-verteks{
+
+        }
+        .container-spanning{
+
+        } */
+        .container-subgraf{
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #a55b5b;
+            /* opacity: 0.5; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .main-container{
+            width: 100%;
+            margin: 50 px auto;
+            padding: 40px;
+            background-color: rgb(55, 164, 195);
+        }
+        img{
+            width: 200px;
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container-subgraf">
+        <div class="subgraf">
+            <h2>SUBGRAF</h2>
+            <h4>1. Pengertian Subgraf</h4>
+            <p>Dalam teori graf, <b>Subgraph</b> adalah graf yang memiliki himpunan titik dan sisi yang merupakan bagian dari himpunan titik dan sisi graf lainnya. Subgraf dapat didefinisikan sebagai graf dengan verteks (titik) dan rusuk (sisi) yang merupakan himpunan bagian tak kosong dari verteks dan rusuk graf lainnya.
+            </p>
+            <p>
+                Misalkan G = (V, E) adalah suatu graf dengan himpunan titik V dan himpunan sisi E.
+                Suatu grafik H = (V1, E1) dianggap sebagai subgraf dari suatu grafik G jika dan hanya jika: <br>
+                a. V1 (H) ⊆ V (G) <br>
+                b. E1 (H) ⊆ E (G)
+                <br>
+                Setiap garis dalam H mempunyai titik ujung yang sama dengan garis tersebut dalam G
+            </p>
+            <h4>2. Contoh Subgraf</h4>
+            <img src="contoh-subgraf.jfif" alt="" style="width: 250px; height: 180px;">
+            <p>Apakah H merupakan subgraf G ?</p>
+            <p><b>Penyelesaian : <br></b></p>
+            <p>
+                V (H) = {V2,V3} dan V (G) = {V1,V2,V3}, sehingga E (H) ⊆ E (G). <br>
+                Garis e4 di H merupakan loop pada V2 dan e4 juga merupakan loop pada V2 di G. Maka H merupakan subgraf G.
+            </p>
+        </div>
+        </div>
+        <div class="container-spanning">
+        <div class="spanning-subgraf">
+            <h2>SUBGRAF PERENTANG ( SPANNING SUBGRAF)</h2>
+            <h4>1. Pengertian Subgraf Perentang</h4>
+            <p>Suatu subgraph H dari graf G dapat disebut spanning subgraph atausubgraf perentang dari G jika V (H) = V (G)
+            </p>
+            <p>
+                Subgraf perentang adalah subgraf dari suatu graf yang memiliki semua simpul dari graf tersebut. Subgraf perentang dapat berisi simpul terisolasi dan siklus. Jika semua simpul dari subgraf perentang terhubung tanpa siklus, maka akan terbentuk pohon rentang.
+            </p>
+            <h4>2. Contoh Soal Subgraf Perentang</h4>
+            <img src="example-2.jfif" alt="" style="width: 200px; height: 180px;">
+            <p>Apakah G2 merupakan subgraf perentang dari G1 ?</p>
+            <p>Penyelesaian :</p>
+            
+        </div>
+    </div>
+    <div class="container-verteks">
+        <div class="induksi-verteks">
+            <h2>SUBGRAF DIINDUKSI OLEH VERTEKS</h2>
+            <h4>1. Pengertian Subgraf Diinduksi Oleh Verteks</h4>
+            <p>
+                Definisi subgraf yang diinduksi oleh verteks adalah: <br>
+                a. Subgraf H dari G dikatakan subgraf yang diinduksi titik jika H = 〈S〉 untuk suatu himpunan tak-kosong S ⊆ V(G). <br>
+                b. Subgraf terinduksi dari suatu grafik merupakan grafik lain, yang dibentuk dari bagian himpunan titik-titik grafik dan semua sisi, dari grafik asli, yang menghubungkan pasangan titik-titik dalam bagian himpunan tersebut. 
+            </p>
+            <h4>2. Contoh Soal Subgraf Diinduksi oleh verteks</h4>
+            <img src="example-3.jfif" alt="" style="width: 200px; height: 180px;">
+        </div>
+    </div>
+    <div class="container-sisi">
+        <div class="induksi-sisi">
+            <h2>SUBGRAF DIINDUKSI OLEH SISI</h2>
+            <h4>1. Pengertian Subgraf Diinduksi oleh Sisi</h4>
+            <p>
+                Misalkan X himpunan takkosong yang merupakan sub himpunan dari E (G). Maka subgraf yang diinduksi oleh X adalah subgraf minimal dari G dengan himpunan sisi adalah X dan dinotasikan dengan (X). <br>
+
+                Jadi,(X) terdiri atas verteks-verteks di G yang incident dengan paling sedikit satu sisi di X. <br>
+
+                <b><p>Definisi:</p></b>
+                
+                <p>Subgraf H dari graf G dikatakan subgraf yang diinduksi sisi (edge-induced subgraph) jika H = (X), untuk suatu himpunan takkosong X ⊆ E (G).</p>
+            </p>
+        </div>
+        </div>
+        <h2>Tonton Video ini untuk Pemahaman lebih lanjut</h2> 
+    </div>
+    <!-- <div class="video-container">
+        <video width="640" height="360" controls>
+            <source src="" type="">
+        </video>
+    </div>              -->
+
+</body>
+</html>

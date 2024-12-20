@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Subgraf Diinduksi Sisi</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+        .btn-start {
+            color: white;
+            background-color: #d46c11;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-start:hover {
+            background-color: #a6500c;
+        }
+        h1 {
+            color: #d46c11;
+        }
+    </style>
+    <script>
+        class Graph {
+            constructor() {
+                this.graph = {};
+            }
+
+            // Menambahkan sisi ke graf
+            addEdge(u, v) {
+                if (!this.graph[u]) this.graph[u] = [];
+                if (!this.graph[v]) this.graph[v] = [];
+                this.graph[u].push(v);
+                if (u !== v) {
+                    this.graph[v].push(u); // Untuk graf tak berarah
+                }
+            }
+
+            // Mengambil subgraf yang diinduksi oleh sisi tertentu
+            getEdgeInducedSubgraph(edges) {
+                const subgraph = {};
+
+                edges.forEach(([u, v]) => {
+                    if (!subgraph[u]) subgraph[u] = [];
+                    if (!subgraph[v]) subgraph[v] = [];
+                    subgraph[u].push(v);
+                    if (u !== v) {
+                        subgraph[v].push(u);
+                    }
+                });
+
+                return subgraph;
+            }
+
+            // Mengecek apakah subgraf terhubung
+            isConnected(subgraph) {
+                if (Object.keys(subgraph).length === 0) return false;
+
+                const visited = new Set();
+                const startNode = Object.keys(subgraph)[0];
+
+                const dfs = (node) => {
+                    visited.add(node);
+                    subgraph[node].forEach(neighbor => {
+                        if (!visited.has(neighbor)) dfs(neighbor);
+                    });
+                };
+
+                dfs(startNode);
+
+                return Object.keys(subgraph).every(node => visited.has(node));
+            }
+
+            // Menampilkan graf dalam format string
+            display(graph) {
+                if (!graph || Object.keys(graph).length === 0) return "Graf kosong.";
+                let result = "";
+                for (const [node, edges] of Object.entries(graph)) {
+                    result += `${node} -> ${edges.join(", ")}\n`;
+                }
+                return result.trim();
+            }
+        }
+
+        function displayOutput(message) {
+            const outputDiv = document.getElementById("output");
+            outputDiv.textContent += message + "\n";
+        }
+
+        function clearOutput() {
+            document.getElementById("output").textContent = "";
+        }
+
+        function main() {
+            clearOutput();
+
+            const g = new Graph();
+
+            // Input graf dari pengguna
+            const graphInput = prompt("Masukkan sisi graf (format: u v, pisahkan setiap sisi dengan koma):");
+            if (graphInput) {
+                const edges = graphInput.split(",").map(edge => edge.trim().split(" "));
+                edges.forEach(([u, v]) => {
+                    if (u && v) g.addEdge(u, v);
+                });
+                displayOutput("Graf asli:\n" + g.display(g.graph));
+            }
+
+            // Input sisi untuk subgraf yang diinduksi
+            const edgesInput = prompt("Masukkan sisi untuk subgraf yang diinduksi (format: u v, pisahkan setiap sisi dengan koma):");
+            const subgraphEdges = edgesInput ? edgesInput.split(",").map(edge => edge.trim().split(" ")) : [];
+
+            // Mendapatkan subgraf yang diinduksi
+            const inducedSubgraph = g.getEdgeInducedSubgraph(subgraphEdges);
+
+            displayOutput("\nSubgraf yang Diinduksi:\n" + g.display(inducedSubgraph));
+
+            // Memeriksa apakah subgraf terhubung
+            if (g.isConnected(inducedSubgraph)) {
+                displayOutput("\nGraf tersebut merupakan subgraf terinduksi sisi \nSubgraf terhubung: Semua simpul dalam subgraf saling terhubung melalui sisi yang dipilih.");
+            } else {
+                displayOutput("\nGraf tersebut bukan merupakan subgraf terinduksi sisi \nSubgraf tidak terhubung: Ada simpul dalam subgraf yang tidak dapat terhubung dengan simpul lainnya.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Kalkulator Subgraf Diinduksi oleh Sisi</h1>
+    <button class="btn-start" onclick="main()">Mulai Program</button>
+    <div id="output"></div>
+</body>
+</html>

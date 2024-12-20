@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subgraf</title>
+  <style>
+    :root
+
+    /*Mempermudah pengelolaan warna atau properti lain.*/
+      {
+      --nav: #cb8215;
+      --main-color: rgb(173, 57, 22);
+      --black: black;
+      --bg: rgb(215, 153, 37);
+      --border: 1rem solid rgba(144, 15, 15, 0.393);
+    }
+
+    * {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: 0.2s linear;
+    }
+
+    html {
+      font-size: 62.5%;
+      overflow-x: hidden;
+      /*Menyembunyikan konten yang melampaui lebar layar pada sumbu horizontal (Mencegah tampilan halaman dari kelebihan lebar, terutama jika elemen-elemen memiliki margin atau posisi yang tidak terkendali.)*/
+      scroll-padding-top: 9rem;
+      /*Mencegah konten terpotong oleh header atau elemen tetap lainnya saat pengguna menggulir(scroll).*/
+      scroll-behavior: smooth;
+      /*Menghindari efek "melompat" ketika berpindah antar bagian halaman.*/
+    }
+
+    body {
+      background-color: white;
+      background-image: url("restoran_vilya.png");
+      background-repeat: no-repeat;
+      /*mencegah pengulangan gambar (Gambar hanya ditampilkan sekali di latar belakang halaman.)*/
+      background-position: center;
+      /* Gambar selalu berada di posisi tengah, sehingga tampil estetis, terutama pada desain yang responsif*/
+      background-size: cover;
+      /*Menentukan ukuran gambar agar menutupi seluruh elemen body*/
+      min-height: 100vh;
+      /*Menetapkan tinggi minimum elemen body menjadi 100% dari tinggi viewport.
+        Viewport Height (vh): Satuannya mengacu pada tinggi layar pengguna.*/
+    }
+
+    .header {
+      background: var(--nav);
+      display: flex;
+      /*Flexbox mempermudah penempatan, perataan, dan distribusi elemen dalam satu baris atau kolom.*/
+      align-items: center;
+      justify-content: space-between;
+      /*Mengatur distribusi elemen anak secara horizontal di dalam flex container.
+        space-between: Menempatkan elemen anak di ujung kiri dan kanan, dengan jarak yang merata di antara mereka.*/
+      padding: 5px 7%;
+      /*Memberikan ruang tambahan di dalam elemen untuk memastikan konten tidak terlalu rapat dengan tepi elemen.*/
+      position: fixed;
+      /*Menetapkan posisi elemen agar tetap di tempatnya saat pengguna menggulir halaman.
+        Elemen tetap berada di lokasi yang sama relatif terhadap layar.*/
+      width: 100%;
+      /*Mengatur lebar elemen agar mencakup 100% dari lebar elemen induk atau viewport.*/
+      top: 0;
+      /*Menentukan jarak elemen dari bagian atas viewport.
+        0 berarti elemen akan menempel di tepi atas viewport*/
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      /*Menentukan tingkat tumpukan elemen terhadap elemen lainnya di halaman.
+        1000 memberikan prioritas yang sangat tinggi, sehingga elemen ini akan selalu berada di atas elemen*/
+      /* box-shadow: 0.5rem 1 rem rgba(0, 0, 0, 0.1); /*Menambahkan bayangan di sekitar elemen untuk  */
+    }
+
+    .header .navbar a {
+      margin: 0 20px;
+      font-size: 1.5rem;
+      color: black;
+      position: relative;
+      /*Mengatur posisi elemen relatif terhadap posisi normalnya,*/
+      padding-bottom: 5px;
+    }
+
+    .header .navbar a::after {
+      content: "";
+      /*Membuat elemen pseudo (::after) sebagai elemen dekoratif.*/
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      /*Menempatkan elemen pseudo di bawah teks.
+  */
+      width: 0;
+      height: 2px;
+      /*memberikan tinggi*/
+      transition: width 0.3s ease;
+      /*Menambahkan efek transisi yang halus untuk perubahan lebar*/
+    }
+
+    .header .navbar a:hover {
+      cursor: pointer;
+      /*menunjukkan elemen dapat diklik.*/
+      color: yellow;
+      border-bottom: 0.1rem solid yellow;
+      /*Menambahkan garis bawah berwarna kuning untuk efek visual saat hover.*/
+      padding-bottom: 0.2rem;
+    }
+
+    header .navbar a:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <a href="subgraf.html">Subgraf</a>
+      <a href="spanning.html">Spanning Subgraf</a>
+      <a href="induksi-verteks.html">Subgraf Diinduksi Verteks</a>
+      <a href="induksi-sisi.html">Subgraf Diinduksi Sisi</a>
+      <a href="Kalkulator.html">Kalkulator</a>
+    </nav>
+    
+  </header>
+</body>
+
+</html>

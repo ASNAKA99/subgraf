@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    /* Navbar Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: rgb(234, 211, 161);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #c47836;
+      color: #fff;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-menu li {
+      position: relative;
+      margin: 0 10px;
+    }
+
+    .navbar-menu a {
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 10px;
+      display: inline-block;
+    }
+
+    .navbar-menu a:hover {
+      background-color: #f39c12;
+      color: #fff;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #b2600f;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      min-width: 200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f39c12;
+    }
+
+    /* Show dropdown on hover */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #030303;
+    }
+
+    p {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      color: #030303;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="name">SUBGRAF</div>
+    <ul class="navbar-menu">
+      <li><a href="subgraf.html">Subgraf</a></li>
+      <li><a href="spanning.html">Spanning Subgraf</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Subgraf Induksi</a>
+        <ul class="dropdown-menu">
+          <li><a href="induksi-verteks.html">Induksi Verteks</a></li>
+          <li><a href="induksi-sisi.html">Induksi Sisi</a></li>
+        </ul>
+      </li>
+      <li><a href="Quiz.html">Quiz</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Kalkulator</a>
+        <ul class="dropdown-menu">
+          <li><a href="induksisi-kalkulator.html">Induksi Sisi</a></li>
+          <li><a href="induksiverteks-kalkulator.html">Induksi Verteks</a></li>
+          <li><a href="kalkulator-spanning.html">Perentang</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <section class="home">
+    <div class="content">
+      <h1>SUBGRAF</h1>
+      <p>Selamat Datang di Website kami!</p>
+      <p>Website ini berisikan materi tentang Subgraf dan jenis-jenis Subgraf beserta contohnya.</p>
+    </div>
+  </section>
+</body>
+</html>

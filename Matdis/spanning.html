@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+             padding: 0;
+            background-color: #fff;
+        }
+       
+        .container-subgraf{
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #cd9d4c;
+            /* opacity: 0.5; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .main-container{
+            width: 100%;
+            margin: 50 px auto;
+            padding: 40px;
+            background-color: rgb(180, 130, 74);
+        }
+        /* img{
+            width: 200px;
+            height: 180px;
+        } */
+         h2{
+            text-align: center;
+         }
+         /* Gaya umum untuk bagian video */
+      .video-container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk heading */
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
+/* Gaya untuk elemen video */
+video {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+    .video-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+} 
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+} 
+
+    
+    </style>
+</head>
+<body>
+    <div class="main-container">
+    <div class="container-subgraf">
+        <div class="subgraf">
+            <h2>SUBGRAF SPANNING/PERENTANG</h2>
+            <h4>Pengertian Subgraf Spanning /Perentang</h4>
+            <p>Suatu subgraph H dari graf G dapat disebut spanning subgraph atau subgraf perentang dari G ,jika<b> V (H) = V (G)</b>
+            Jadi,suatu graf dapat dikatakan subgraf perentang jika memenuhi kedua syarat yaitu:
+            <li>1.Jumlah simpul kedua subgrafnya sama</li>
+            <li>2. Sisi subgraf 2 merupakan bagian dari sisi subgraf 1 ataupun sebaliknya</li>
+            </p>
+            <h2>CONTOH SOAL</h2>
+            <p>Apakah G2 merupakan subgraph 
+                Perentang dari G1 ? </p>
+                <img src="Subgraf Perentang.png">
+            <h2> JAWABAN DAN PENJELASAN</h2>
+            <p>Pada gambar tersebut Graf G1 dan graf G2 memiliki simpul yang sama yaitu</p>
+           <p><b>Simpul/Vertex:{a,b,c,d,e,f}</b></p>
+          <p>Jadi Subgraf ini memenuhi syarat pertama yaitu memiliki simpul atau vertex yang sama</p>
+            <p>
+                <p> Lalu kita telaah lagi pada sisinya</p>
+                <p>Pada G1 sisinya terdiri dari:</p>
+                <li>a-b</li>
+                <li>a-c</li>
+                <li>b-d</li>
+                <li>c-d</li>
+                <li>d-f</li>
+                <li>c-f</li>
+                <li>e-f</li>
+                <p>Pada G2 sisinya terdiri dari:</p>
+                <li>a-b</li>
+                <li>b-d</li>
+                <li>c-f</li>
+                <li>e-f</li>
+                <p>Pada graf G2 terdapat sisi yang sama yang mana sisi tersebut ada juga di G1</p>
+                <p> atau bisa disebut juga sisi G2 merupakan bagian(⊆) dari G1</p>
+                 Jadi, G2 adalah subgraph perentang G1
+                karena V(G2) = V(G1) dan E(G2) ⊆ E(G1).
+                
+                <h2>Tonton Video ini untuk Pemahaman lebih lanjut</h2> 
+                </div>
+                <div class="video-container">
+                    <video width="640" height="360" controls>
+                        <source src="Video Perentang.mp4" type="video/mp4">
+                    </video>
+                </div> 
+                <div class="video-container">
+                    <video width="640" height="360" controls>
+                        <source src="Video Perentang 2.mp4" type="video/mp4">
+                    </video>
+                </div>             
+        </div>
+        </div>
+    </div>
+    <!-- <img src="Soal 2.jpg">
+    <img src="Gambar Soal 4.jpg">
+    <img src="Gambar Soal 5.png">
+    <img src="Gambar Soal 5 1.png"> -->
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #cc9660, #6d2604);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            background: #fccda6;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .answers button {
+            background: rgb(248, 248, 248);
+            color: rgb(7, 7, 7);
+            border: none;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .answers button:hover {
+            background: #b2600f;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .result.wrong {
+            color: #dc3545;
+        }
+
+        .question-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .explanation {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <img src="" alt="Question Image" class="question-image" id="questionImage">
+        <div class="question" id="question">Question text here</div>
+        <div class="answers" id="answers"></div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "1. Graf G memiliki 6 simpul (A, B, C, D, E, F) dan 10 sisi. Apakah graf M dengan simpul A-B-C-D-E merupakan subgraf dari G?",
+                options: ["Ya", "Tidak"],
+                answer: "Ya",
+                explanationPage: "subgraf.html",
+                explanationVideo: "Video_Subgraf.mp4"
+            },
+            {
+                question: "2. Apakah graf H berikut merupakan subgraf dari graf G?",
+                image: "images/Soal no 2.png",
+                options: ["Subgraf", "Bukan Subgraf"],
+                answer: "Subgraf",
+                explanationPage: "subgraf.html",
+                explanationVideo: "Video_Subgraf.mp4"
+            },
+            {
+                question: "3. Diberikan graf V(G)={A,B,C,D} dan E(G)={(A,B), (A,C), (B,C), (C,D)}. Sebutkan subgraf yang valid!",
+                options: [
+                    "V(H)={A, B, C} E(H)={(A, B), (A, C)}",
+                    "V(H)={C, D, E} E(H)={(C, D), (D, E)}"
+                ],
+                answer: "V(H)={A, B, C} E(H)={(A, B), (A, C)}",
+                explanationPage: "subgraf.html",
+                explanationVideo: "Video_Subgraf.mp4"
+            },
+            {
+                question: "4. Apakah G2 adalah subgraf terinduksi verteks G1?",
+                image: "images/Gambar Soal 4.jpg",
+                options: ["Ya", "Tidak"],
+                answer: "Tidak",
+                explanationPage: "induksi-verteks.html",
+                explanationVideo: "Video_Induksi_Vertex.mp4"
+            },
+            {
+                question: "5. Apakah G2 adalah subgraf terinduksi sisi G1?",
+                options: ["Ya", "Tidak"],
+                image: "images/Gambar Soal 4.jpg",
+                answer: "Ya",
+                explanationPage: "induksi-sisi.html",
+                explanationVideo: "Video_Induksi_Sisi.mp4"
+            },
+            {
+                question: "6. Apakah H1 merupakan subgraf dari G? Apakah H1 merupakan subgraf perentang dari G?",
+                image: "images/Soal no 6.png",
+                options: ["Subgraf Perentang", "Bukan Subgraf Perentang"],
+                answer: "Subgraf Perentang",
+                explanationPage: "spanning.html",
+                explanationVideo: "Video_Perentang_2.mp4"
+            },
+            {
+                question: "Apakah H2 merupakan subgraf perentang dari G??",
+                options: ["Ya", "Tidak"],
+                answer: "Tidak",
+                image: "images/Soal 7.png",
+                explanationPage: "spanning.html",
+                explanationVideo: "Video_Perentang_2.mp4"
+            },
+            {
+                question: "Apakah H3 merupakan subgraf dari G?",
+                options: ["Subgraf", "Bukan Subgraf"],
+                answer: "Ya",
+                image: "images/Soal 8.png",
+                explanationPage: "subgraf.html",
+                explanationVideo: "Video_Subgraf.mp4"
+            },
+            {
+                question: "Apakah H3 merupakan subgraf dari G ?",
+                options: ["Ya", "Tidak"],
+                answer: "Tidak",
+                image: "images/Soal 8.png",
+                explanationPage: "spanning.html",
+                explanationVideo: "Video_Perentang_2.mp4"
+            },
+            {
+                question: "Apakah G1 dan G2 merupakan subgraf  dari G?",
+                options: ["Subgraf", "Bukan Subgraf"],
+                answer: "Subgraf",
+                image: "images/Soal 10.png",
+                explanationPage: "subgraf.html",
+                explanationVideo: "Video_Subgraf.mp4"
+            },
+
+
+        ];
+
+        let currentQuestion = 0;
+        const questionEl = document.getElementById('question');
+        const answersEl = document.getElementById('answers');
+        const resultEl = document.getElementById('result');
+        const questionImageEl = document.getElementById('questionImage');
+        const extraImageContainer = document.createElement('div');
+        extraImageContainer.id = 'extraImages';
+        document.querySelector('.quiz-container').insertBefore(extraImageContainer, answersEl);
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+
+            questionImageEl.style.display = 'none';
+            extraImageContainer.innerHTML = '';
+
+            if (currentQuiz.image) {
+                questionImageEl.src = currentQuiz.image;
+                questionImageEl.style.display = 'block';
+            }
+
+            if (currentQuiz.images) {
+                currentQuiz.images.forEach(imgSrc => {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.classList.add('question-image');
+                    extraImageContainer.appendChild(img);
+                });
+            }
+
+            answersEl.innerHTML = '';
+            resultEl.textContent = '';
+
+            currentQuiz.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => checkAnswer(option);
+                answersEl.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selected) {
+            const currentQuiz = quizData[currentQuestion];
+            const correct = currentQuiz.answer;
+
+            if (selected === correct) {
+                resultEl.textContent = "Benar!";
+                resultEl.classList.remove('wrong');
+            } else {
+                resultEl.textContent = `Salah! Jawaban Salah,Pelajari lagi materinya ${correct}.`;
+                resultEl.classList.add('wrong');
+            }
+
+            setTimeout(() => {
+                window.open(currentQuiz.explanationPage, "_blank");
+                window.open(currentQuiz.explanationVideo, "_blank");
+
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    resultEl.textContent = "Selamat Quiz Telah Selesai!";
+                    questionEl.textContent = '';
+                    questionImageEl.src = '';
+                    answersEl.innerHTML = '';
+                    extraImageContainer.innerHTML = '';
+                }
+            }, 2000);
+            function loadQuestion() {
+                const currentQuiz = quizData[currentQuestion];
+                questionEl.textContent = currentQuiz.question;
+
+                // Tampilkan gambar utama
+                if (currentQuiz.image) {
+                    questionImageEl.src = currentQuiz.image;
+                    questionImageEl.style.display = 'block';
+                } else {
+                    questionImageEl.style.display = 'none';
+                }
+
+                // Tampilkan beberapa gambar
+                extraImageContainer.innerHTML = '';
+                if (currentQuiz.images) {
+                    currentQuiz.images.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.classList.add('question-image');
+                        extraImageContainer.appendChild(img);
+                    });
+                }
+
+                // Muat opsi jawaban
+                answersEl.innerHTML = '';
+                currentQuiz.options.forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.onclick = () => checkAnswer(option);
+                    answersEl.appendChild(button);
+                });
+            }
+
+        }
+
+        loadQuestion();
+    </script>
+</body>
+
+</html>
